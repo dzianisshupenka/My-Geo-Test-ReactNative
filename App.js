@@ -1,21 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StatusBar} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import MainScreen from './components/MainScreen';
+import HistoryWrapper from './components/HistoryWrapper';
 
-export default function App() {
+const Tab = createMaterialTopTabNavigator();
+
+export default App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <NavigationContainer>
+      <StatusBar />
+      <Tab.Navigator tabBarOptions={{
+          activeTintColor: '#54B0FC',
+          labelStyle: {
+            fontSize: 25,
+          },
+          tabStyle: {
+            justifyContent: 'center'    
+          },
+          style: {
+            backgroundColor: '#080A35'
+          },
+        }}>
+        <Tab.Screen name="Main" component={MainScreen} />
+        <Tab.Screen name="History" component={HistoryWrapper} />
+      </Tab.Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
