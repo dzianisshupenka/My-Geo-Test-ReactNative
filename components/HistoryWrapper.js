@@ -27,9 +27,9 @@ export default class HistoryWrapper extends React.Component {
     render() {
         if (this.state.keys) {
             return (
-                <History  keys={this.state.keys}/>
+                <History  keys={this.state.keys} nav = {this.props.navigation}/>
             )
-        } else return <Text>loaddddd</Text>
+        } else return <Text>loading</Text>
 
       }
   }

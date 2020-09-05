@@ -4,11 +4,11 @@ import {StatusBar} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MainScreen from './components/MainScreen';
-import HistoryWrapper from './components/HistoryWrapper';
+import { MyStack } from './components/StackNavigator';
 
 const Tab = createMaterialTopTabNavigator();
 
-export default App = () => {
+export default function App()  {
   return (
     <NavigationContainer>
       <StatusBar />
@@ -25,7 +25,7 @@ export default App = () => {
           },
         }}>
         <Tab.Screen name="Main" component={MainScreen} />
-        <Tab.Screen name="History" component={HistoryWrapper} />
+        <Tab.Screen name="History" component={MyStack} />
       </Tab.Navigator>
     </NavigationContainer>
   )

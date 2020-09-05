@@ -1,9 +1,7 @@
 import React from 'react';
-import { View, Button, Text, StyleSheet, Alert, ScrollView } from 'react-native';
+import { View, Button, Text, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ItemList } from './ItemList';
-
-
 
 export default class History extends React.Component {
 
@@ -19,10 +17,9 @@ export default class History extends React.Component {
         this.setState({
             data: null
         })
-      }
+    }
 
     getMultiple = async (keys) => {
-
         let values
         try {
           values = await AsyncStorage.multiGet(keys)
@@ -31,7 +28,7 @@ export default class History extends React.Component {
         this.setState({
             data: values
         })
-      }
+    }
     
     componentDidMount() { 
         this.getMultiple(this.props.keys)
@@ -58,11 +55,11 @@ export default class History extends React.Component {
                     onPress={() => this.clearAll()}
                 />
                 <ScrollView >
-                    <ItemList items = {itemData}/>
+                    <ItemList items = {itemData} nav={this.props.nav}/>
                 </ScrollView>
             </View>
         )
-        } else return (
+    } else return (
             <View style={styles.historyMainNoData}>
                 <Button
                     title="Clear history"
@@ -70,15 +67,15 @@ export default class History extends React.Component {
                     onPress={() => this.clearAll()}
                 />
                 <Text style={styles.historyText}>No data</Text>
-            </View>
-            
+            </View>           
         )
-
-      }
+    }
   }
 
+const deviceHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     historyMain: {
+        height: deviceHeight,
         flex: 1,
         paddingTop: 10,
         backgroundColor: '#0D011E',

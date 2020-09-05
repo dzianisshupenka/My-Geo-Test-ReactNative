@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Dimensions} from 'react-native';
 
 export const Position = ({position, currentDate}) => {
     return(
@@ -13,11 +13,13 @@ export const Position = ({position, currentDate}) => {
     )
 }
 
+const width = Dimensions.get('window').width
 const styles = StyleSheet.create({
     mainPosition: {
         flex: 1,
         backgroundColor: '#0D011E',
         padding: 20,
+        width: width - 30,
         marginVertical: 3,
         marginHorizontal: 15
     },

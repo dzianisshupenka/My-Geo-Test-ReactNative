@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Dimensions} from 'react-native';
 
 export const Adress = ({address}) => {
     return(
@@ -12,10 +12,12 @@ export const Adress = ({address}) => {
     )
 }
 
+const width = Dimensions.get('window').width
 const styles = StyleSheet.create({
     mainAdress: {
         flex: 1,
         backgroundColor: '#0D011E',
+        width: width-30,
         padding: 20,
         marginVertical: 3,
         marginHorizontal: 15
